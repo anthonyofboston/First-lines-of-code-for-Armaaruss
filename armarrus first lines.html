@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" type="text/css" href="index.css">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Motion Detection in JS</title>
+    <meta charset="utf-8">
+ <script defer src="face-api.min.js"></script>
+    <style>
+
+
+.overlay {
+  position:absolute;
+  top:0;
+  width:100%;
+  z-index:0;
+  text-align:center;
+}
+
+img {
+  display:inline-block;
+float:left;
+text-align:center;
+
+}
+
+    span { 
+    display: inline-block; 
+    position: absolute;
+}
+
+div#box
+{
+    width: 100px;
+    height: 100px;
+    background-color: #00FF00;
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    z-index: 1;
+}
+  
+canvas {
+        
+     width: 400px;
+    height: 400px;
+    object-fit: cover;
+    object-position: center;  
+visibility: hidden;
+   
+  border: 1px solid black;
+}
+.invisible {
+  display: none;
+}
+.text-center {
+visibility: hidden;
+  text-align: center;
+}
+div {
+  margin: 10px;
+}
+.center-block {
+  display: block;
+  margin: auto;
+  
+}
+
+p {
+color: red;
+font-size: 56px;
+position: absolute;
+top: 700px;
+left: 500px;
+
+        text-align: center;
+        margin: 20px;
+ text-align: center;
+z-index: 1;
+
+    object-position: center
+}
+
+.img {
+max-width: 100%;
+    max-height: 100%;
+    margin: auto;
+    display:inline-block;
+    top: 0; left: 0; bottom: 0; right: 0;overflow:hidden;
+}
+p1 {
+visibility: hidden;
+}
+
+p2 {
+visibility: hidden;
+}
+
+#messageArea {
+        font-size: 36px;
+        text-align: center;
+        margin: 20px;
+    }
+
+label {
+  padding-right: 10px;
+  width: 25%;
+  vertical-align: top;
+  font: 16px 'Lucida Grande', sans-serif;
+} 
+
+.night{ filter: invert(0%);
+
+}
+
+.move {
+top: 99px;
+  left: 661px;
+  height: 8px;
+  width: 8px;
+  background-color: black;
+    position: absolute;
+border: 1px solid black;
+  border-radius: 50%;
+z-index:1;
+object-fit: contain
+
+animation-duration: 2s;
+  
+    
+}
+
+
+
+@keyframes leftRight {
+    0% {left: 50px;}
+    50% {left: 0px;}
+    100% {left: 50px;}
+}
+
+@keyframes leftRight1 {
+    0% {left: 150px;}
+    50% {left: 90px;}
+    100% {left: 150px;}
+}
+  
+    </style>
+
+</head>
+
+<body>
+ <p style = visibility: hidden id="textID">
+        The Most High God gave the commandments to Moshe at Mount Sinai. My commands, on the other hand, are not commands but mere service to the vehicle by which I dwell amongst my people. So if you see a person with a "1" on his forehead while you walk among earth dwellers, exhort him and understand that he has taken the mark and he was born with Mars in the 1st seal. Let only this man speak directly to you and let him curse you to your face and let him covet your possessions and covet your wife and let him beg you everyday. This is his station and my revelation to him. He has the heart that you can draw near to, as his domain is the one on one. Leave him happy with the partner of his youth and take nothing from him since he is a jealous and selfish man who will not worship his immediate environment, but will work the land and instruct his children and keep the construct. Stay close to him and adhere to Mars 360, your refuge of peace. Give him who has the "1" the generous threshold and larceny can wait. Let him curse your feelings with his temper directly. If you see a man (as you walk among the towns) wearing a "2" on his forehead, he has taken the mark and dwells with me under my protection. Give him silence since he has been commissioned to learn on his own and to be angry and to seek flight. He fears no fear and walks in the valley of the shadow of death. Do not draw close. His heart is ravenous. Give him space and live. Speak kindly and he will exhort you. Do not provoke him as he navigates on the wheels of travel and tightropes over the sea of demise. Did you know that he is not bound to wife or children? He is bound to work and his energy and will not sit.  If you walk through the villages or towns or cities and see a man with a "3", let him consume and let him move freely with his body, since his body is not the temple of the Most High. It is the jurisdiction of his whims. Who has he hurt? And do not destroy his possible destination or trap him physically or chain him to his house or his country. Let him sell potions and wines to those who also have his mark since they are brethren. Yet, he hates his home and abuses his belly. He will find meaning and purpose in the existential crisis of his insignificance. He will hate his government and bring the sword of Yeshua. Leave him be in that regard and give him the keys to the sky. If you see a man in the community and he is wearing a "4", let him speak the truth of his experience. His arrows come indirectly and while he is not looking at you, so introduce yourself and hear what he has to say and judge not his opinion, no matter how vulgar or obscene. Yet be careful because he is a pervert and has needs and bears false witness. This is my revelation to him. The Most High God does not even see him because he exhorts Him. He is your community leader because he does not fear the hidden enemy and is a wolf to what he does not know. Don't ask him to read the words of that book which does not confirm him. His nationality and creed is the order of the day and he is commissioned by me to preserve his race and his culture and his mother. Understand him and know what he knows and he will bless you on account of what I have given to him because he hates the weak. If you see a man in your jurisdiction wearing a "5", do not impose upon him with commands to worship or work. Let him sit still since he is a man of leisure and cannot be given an order. Do not elevate yourself to the status of the Most High because he does not praise upward. Do not judge his life or give him an ultimatum for time is not of the essence. He can hate God and blaspheme Him and avoid the abusive authority as Mars dictates. Do not promote violence in his space since his sword is in the heavens, which is not the sword of Yeshua. Let him derive sustanence from the philosophies of Noam. Give him a handout and a flag of anarchy. If you see a man walking the roads with a "6", do not look at him because he hates your eyes. I have commanded him not to smile or display false reverence. Nonetheless you will laugh at him, but do not judge him based on outward display since his lips are lazy and his sound mute. And know that he loves your culture and your difference. He will not confront you directly. He will sulk and avoid you and will worship the solitude and the free expression and the facial liberty. Do not critique what you see at face value. Use wisdom and love him before you meet him. 
+    </p>
+
+
+<div class="overlay">
+<img src="https://i.imgur.com/4ez3dg4.jpg" alt="">
+</div>
+
+<div class="move">
+</div>
+
+<div class="move1">
+</div>
+
+<div id="container">
+    
+</div>
+
+<div class="overlay">
+<h1> </h1>
+</div>
+<div class='a'></div>
+<p id="demo"></p>
+
+   <p1>
+    X: <span id="x-value"></span>
+</p1>
+<p2>
+    Y: <span id="y-value"></span>
+</p2>
+  
+     <script src="sketch.js"></script>
+<script type="text/javascript" src='script.js'></script>
+ <div id="container">
+    <canvas class="center-block" id="canvasOutput" width=320 height=240></canvas>
+    <canvas class="center-block" id="blendCanvas" width=640 height=480></canvas>
+  </div>
+  <div class="text-center">
+    <input type="checkbox" id="face" name="classifier" value="face" checked>
+    <label for="face">face</label>
+    <input type="checkbox" id="eye" name="cascade" value="eye">
+    <label for="eye">eye</label>
+  </div>
+  <div class="invisible">
+    <video id="video" class="hidden">Your browser does not support the video tag.</video>
+  </div>
+  <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+  <script src="https://threejs.org/examples/js/libs/stats.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.5/dat.gui.min.js"></script>
+  <script>
+    var Module = {
+       wasmBinaryFile: 'https://huningxin.github.io/opencv.js/build/wasm/opencv_js.wasm',
+      preRun: [function() {
+        Module.FS_createPreloadedFile('/', 'haarcascade_frontalface_default.xml', 'https://raw.githubusercontent.com/opencv/opencv/master/data/haarcascades/haarcascade_frontalface_default.xml', true, false);
+        Module.FS_createPreloadedFile('/', 'haarcascade_eye_tree_eyeglasses.xml', 'https://raw.githubusercontent.com/Apiquet/opencv_visual_recognition/master/HaarCascade/HaarCascade/haarcascade_eye_tree_eyeglasses.xml', true, false);
+        Module.FS_createPreloadedFile('/', 'haarcascade_profileface.xml', 'https://raw.githubusercontent.com/opencv/opencv/master/data/haarcascades/haarcascade_profileface.xml', true, false);
+Module.FS_createPreloadedFile('/', 'haarcascade_Aircraft2.xml', 'https://raw.githubusercontent.com/tolgasumer/object-recognition-cascades/master/Aircraft2.xml', true, false);
+      }],
+      _main: function() {opencvIsReady();}
+    };
+  </script>
+  <script src="https://huningxin.github.io/opencv.js/build/wasm/opencv.js"></script>
+  <script src="index.js"></script>
+</body>
+
+<script>
+
+
+ const collection = document.getElementsByClassName("move");
+ const collections = document.getElementsByClassName("move1");
+
+
+let videoWidth, videoHeight;
+
+// whether streaming video from the camera.
+let streaming = false;
+
+let video = document.getElementById('video');
+let canvasOutput = document.getElementById('canvasOutput');
+let canvasOutputCtx = canvasOutput.getContext('2d');
+let blendCanvas = document.getElementById("blendCanvas");
+let blendContext = blendCanvas.getContext('2d');
+let messageArea = document.getElementById("messageArea");
+let stream = null;
+
+let detectFace = document.getElementById('face');
+let detectEye = document.getElementById('eye');
+
+function startCamera() {
+  if (streaming) return;
+  navigator.mediaDevices.getUserMedia({video: true, audio: false})
+    .then(function(s) {
+    stream = s;
+    video.srcObject = s;
+    video.play();
+document.documentElement.classList.add('night');
+  })
+    .catch(function(err) {
+    console.log("An error occured! " + err);
+  });
+
+  video.addEventListener("canplay", function(ev){
+    if (!streaming) {
+      videoWidth = video.videoWidth;
+      videoHeight = video.videoHeight;
+      video.setAttribute("width", videoWidth);
+      video.setAttribute("height", videoHeight);
+      canvasOutput.width = videoWidth;
+      canvasOutput.height = videoHeight;
+      streaming = true;
+    }
+    startVideoProcessing();
+  }, false);
+}
+
+
+
+
+function textToSpeech() {
+            //alert("Test"); //for test only.
+            const speech = new SpeechSynthesisUtterance();
+            let voices = speechSynthesis.getVoices();
+            let convert = document.getElementById("textID").innerHTML;
+
+            speech.text = convert;
+
+            speech.volume = 1;
+            speech.rate = 0.6;
+            speech.pitch = 0;
+
+            speech.voice = voices[0];
+
+            speechSynthesis.speak(speech);
+        }
+
+
+        function pause() {
+            window.speechSynthesis.pause();
+        }
+
+
+        function stop() {
+            window.speechSynthesis.cancel();
+        }
+
+
+      
+
+
+let faceClassifier = null;
+let eyeClassifier = null;
+
+let src = null;
+let dstC1 = null;
+let dstC3 = null;
+let dstC4 = null;
+
+let canvasInput = null;
+let canvasInputCtx = null;
+
+let canvasBuffer = null;
+let canvasBufferCtx = null;
+
+function startVideoProcessing() {
+  if (!streaming) { console.warn("Please startup your webcam"); return; }
+  stopVideoProcessing();
+  canvasInput = document.createElement('canvas');
+  canvasInput.width = videoWidth;
+  canvasInput.height = videoHeight;
+  canvasInputCtx = canvasInput.getContext('2d');
+
+  canvasBuffer = document.createElement('canvas');
+  canvasBuffer.width = videoWidth;
+  canvasBuffer.height = videoHeight;
+  canvasBufferCtx = canvasBuffer.getContext('2d');
+
+  srcMat = new cv.Mat(videoHeight, videoWidth, cv.CV_8UC4);
+  grayMat = new cv.Mat(videoHeight, videoWidth, cv.CV_8UC4);
+
+  faceClassifier = new cv.CascadeClassifier();
+  faceClassifier.load('haarcascade_frontalface_default.xml');
+
+  eyeClassifier = new cv.CascadeClassifier();
+  eyeClassifier.load('haarcascade_eye.xml');
+
+  requestAnimationFrame(processVideo);
+}
+
+function processVideo() {
+  stats.begin();
+  canvasInputCtx.drawImage(video, 0, 0, videoWidth, videoHeight);
+  let imageData = canvasInputCtx.getImageData(0, 0, videoWidth, videoHeight);
+  srcMat.data.set(imageData.data);
+  cv.cvtColor(srcMat, grayMat, cv.COLOR_RGBA2GRAY);
+  let faces = [];
+  let eyes = [];
+  let size;
+  if (detectFace.checked) {
+    let faceVect = new cv.RectVector();
+    let faceMat = new cv.Mat();
+    if (detectEye.checked) {
+      cv.pyrDown(grayMat, faceMat);
+      size = faceMat.size();
+    } else {
+      cv.pyrDown(grayMat, faceMat);
+      cv.pyrDown(faceMat, faceMat);
+      size = faceMat.size();
+    }
+    faceClassifier.detectMultiScale(faceMat, faceVect);
+    for (let i = 0; i < faceVect.size(); i++) {
+      let face = faceVect.get(i);
+      faces.push(new cv.Rect(face.x, face.y, face.width, face.height));
+   
+      
+}} 
+
+
+  canvasOutputCtx.drawImage(canvasInput, 0, 0, videoWidth, videoHeight);
+ drawResults(canvasOutputCtx, faces, 'red', size); 
+
+  drawResults(canvasOutputCtx, eyes, 'yellow', size);
+
+ document.getElementById('x-value').textContent = faces.push(new cv.Rect(face.x, face.y, face.width, face.height));
+  document.getElementById('y-value').textContent = faces.push(new cv.Rect(face.x, face.y, face.width, face.height));
+
+ 
+
+  stats.end();
+  requestAnimationFrame(processVideo);
+}
+
+function drawResults(ctx, results, color, size) {
+  for (let i = 0; i < results.length; ++i) {
+    let rect = results[i];
+    let xRatio = videoWidth/size.width;
+    let yRatio = videoHeight/size.height;
+    ctx.lineWidth = 5;
+
+
+
+
+
+
+
+
+    ctx.strokeStyle = color;
+ctx.strokeRect(rect.x*xRatio, rect.y*yRatio, rect.width*xRatio, rect.height*yRatio);
+  }
+}
+
+function stopVideoProcessing() {
+  if (src != null && !src.isDeleted()) src.delete();
+  if (dstC1 != null && !dstC1.isDeleted()) dstC1.delete();
+  if (dstC3 != null && !dstC3.isDeleted()) dstC3.delete();
+  if (dstC4 != null && !dstC4.isDeleted()) dstC4.delete();
+}
+
+function stopCamera() {
+  if (!streaming) return;
+  stopVideoProcessing();
+  document.getElementById("canvasOutput").getContext("2d").clearRect(0, 0, width, height);
+  video.pause();
+  video.srcObject=null;
+  stream.getVideoTracks()[0].stop();
+  streaming = false;
+}
+
+function initUI() {
+  stats = new Stats();
+  stats.showPanel(0);
+  document.getElementById('container').appendChild(stats.dom);
+}
+
+function opencvIsReady() {
+  console.log('OpenCV.js is ready');
+  initUI();
+  startCamera();
+} 
+
+
+
+animate();
+
+function animate() {
+    requestAnimationFrame(animate);
+
+    render();
+    blend();
+    checkHotspots();
+checkHotspots1();
+}
+
+function render() {
+    
+        
+        canvasOutputCtx.drawImage(video, 255, 455, canvasOutput.width, canvasOutput.height);
+
+    
+}
+
+var lastImageData;
+
+function blend() {
+    var width = canvasOutput.width;
+    var height = canvasOutput.height;
+   
+    var sourceData = canvasOutputCtx.getImageData(0, 0, width, height);
+    
+    if (!lastImageData) lastImageData = canvasOutputCtx.getImageData(0, 0, width, height);
+   
+    var blendedData = canvasOutputCtx.createImageData(width, height);
+    
+    checkDiff(sourceData.data, lastImageData.data, blendedData.data);
+    
+    blendContext.putImageData(blendedData, 0, 0);
+    
+    lastImageData = sourceData;
+}
+
+
+function checkDiff(currentImage, lastImage, output) {
+
+
+    var i = 0;
+    while (i < (currentImage.length / 4)) {
+        var average1 = (currentImage[4 * i] + currentImage[4 * i + 1] + currentImage[4 * i + 2]) / 3;
+        var average2 = (lastImage[4 * i] + lastImage[4 * i + 1] + lastImage[4 * i + 2]) / 3;
+        var diff = threshold((average1 - average2));
+        //var diff = average1 - average2;
+        output[4 * i] = diff;
+        output[4 * i + 1] = diff;
+        output[4 * i + 2] = diff;
+        output[4 * i + 3] = 0xff;
+        ++i;
+    }
+}
+
+
+function fastAbs(value) {
+    return (value ^ (value >> 31)) - (value >> 31);
+}
+
+function threshold(value) {
+    return (value > 0x15) ? 0xFF : 0;
+}
+
+function changeText(){
+var myText = document.getElementByClassName("myText");
+myText[0].innerHTML = " Something Moved";
+}
+
+
+
+function checkHotspots() {
+
+    // get the pixels in a note area from the blended image
+    var blendedData = blendContext.getImageData(0, 0, 250, 250);
+
+    // calculate the average lightness of the blended data
+    var i = 0;
+    var sum = 0;
+    var countPixels = blendedData.data.length * 0.25;
+    while (i < countPixels) {
+        sum += (blendedData.data[i * 4] + blendedData.data[i * 4 + 1] + blendedData.data[i * 4 + 2]);
+        ++i;
+    }
+    // calculate an average between of the color values of the note area [0-255]
+    var average = Math.round(sum / (3 * countPixels));
+    if (average > 8) // more than 20% movement detected
+    {
+
+
+
+textToSpeech();
+
+collection[0].style.backgroundColor = "black";
+
+collection[0].style.left = "664px";
+
+
+       
+    } else {
+ document.getElementById("demo").innerHTML = "";
+
+collection[0].style.backgroundColor = "black";
+collection[0].style.left = "661px";
+
+
+
+
+       
+    }
+
+}
+
+function checkHotspots1() {
+
+    // get the pixels in a note area from the blended image
+    var blendedData1 = blendContext.getImageData(500, 0, 250, 250);
+
+    // calculate the average lightness of the blended data
+    var i = 0;
+    var sum1 = 0;
+    var countPixels = blendedData1.data.length * 0.25;
+    while (i < countPixels) {
+        sum1 += (blendedData1.data[i * 4] + blendedData1.data[i * 4 + 1] + blendedData1.data[i * 4 + 2]);
+        ++i;
+    }
+    // calculate an average between of the color values of the note area [0-255]
+    var average1 = Math.round(sum1 / (3 * countPixels));
+    if (average1 > 8) // more than 20% movement detected
+    {
+
+
+
+textToSpeech();
+
+collection[0].style.backgroundColor = "black";
+
+collection[0].style.left = "659px";
+
+beep(1000, 2, function () {
+        
+    });
+
+       
+    } else {
+ document.getElementById("demo").innerHTML = "";
+
+collection[0].style.backgroundColor = "black";
+collection[0].style.left = "661px";
+checkHotspots();
+  
+
+
+
+       
+    }
+
+}
+
+
+</script>
+
+</html>
+
